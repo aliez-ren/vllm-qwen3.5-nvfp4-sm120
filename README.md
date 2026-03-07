@@ -4,15 +4,15 @@ Run [Qwen3.5-27B](https://huggingface.co/Qwen/Qwen3.5-27B) (Mamba-hybrid, 27B de
 
 ## ⚡ Performance
 
-Benchmarked on a single RTX 5090 (32 GB) with [llama-bench](https://github.com/ggml-org/llama.cpp/tree/master/tools/llama-bench) using the [Kbenkhaled/Qwen3.5-27B-NVFP4](https://huggingface.co/Kbenkhaled/Qwen3.5-27B-NVFP4) checkpoint:
+Benchmarked on a single RTX 5090 (32 GB) with [llama-benchy](https://github.com/eugr/llama-benchy) using the [Kbenkhaled/Qwen3.5-27B-NVFP4](https://huggingface.co/Kbenkhaled/Qwen3.5-27B-NVFP4) checkpoint:
 
-| Metric | 4K Context | 8K Context | 256K Context |
+| Metric | 4K Context | 8K Context | 128K Context |
 |---|---|---|---|
-| **Prompt processing** (pp2048) | 21,232 t/s | 20,401 t/s | 5,124 t/s |
-| **Text generation** (tg32) | 196 t/s | 196 t/s | 156 t/s |
-| **Time to first token** | 290 ms | 503 ms | 51,142 ms |
+| **Prompt processing** (pp2048) | 4,016 t/s | 3,943 t/s | 2,496 t/s |
+| **Text generation** (tg32) | 80 t/s | 79 t/s | 70 t/s |
+| **Time to first token** | 1,534 ms | 2,602 ms | 53,345 ms |
 
-> **~200 tokens/sec generation speed** — fast enough for real-time interactive use.
+> **~80 tokens/sec generation speed** — fast enough for real-time interactive use.
 
 ## Features
 
@@ -77,9 +77,22 @@ This patch is needed because vLLM's HuggingFace-to-vLLM name mapping doesn't cor
 
 ## Benchmark
 
-Tested on a single NVIDIA RTX 5090 (32 GB) using [llama-bench](https://github.com/ggml-org/llama.cpp/tree/master/tools/llama-bench):
+Tested on a single NVIDIA RTX 5090 (32 GB) using [llama-benchy](https://github.com/eugr/llama-benchy):
 
-![llama-bench results](llama-benchy.png)
+```bash
+uvx llama-benchy --base-url http://localhost:8000/v1 --model Kbenkhaled/Qwen3.5-27B-NVFP4 --depth 2048 4096 8192 131072
+```
+
+| model                        |             test |             t/s |     peak t/s |         ttfr (ms) |      est_ppt (ms) |     e2e_ttft (ms) |
+|:-----------------------------|-----------------:|----------------:|-------------:|------------------:|------------------:|------------------:|
+| Kbenkhaled/Qwen3.5-27B-NVFP4 |   pp2048 @ d2048 |  4061.39 ± 9.38 |              |    1012.92 ± 2.44 |    1008.69 ± 2.44 |    1013.21 ± 2.47 |
+| Kbenkhaled/Qwen3.5-27B-NVFP4 |     tg32 @ d2048 |    80.12 ± 0.20 | 82.76 ± 0.20 |                   |                   |                   |
+| Kbenkhaled/Qwen3.5-27B-NVFP4 |   pp2048 @ d4096 |  4016.16 ± 2.91 |              |    1534.21 ± 1.13 |    1529.99 ± 1.13 |    1534.34 ± 1.15 |
+| Kbenkhaled/Qwen3.5-27B-NVFP4 |     tg32 @ d4096 |    79.69 ± 0.08 | 82.31 ± 0.08 |                   |                   |                   |
+| Kbenkhaled/Qwen3.5-27B-NVFP4 |   pp2048 @ d8192 |  3942.72 ± 5.63 |              |    2601.76 ± 3.70 |    2597.53 ± 3.70 |    2601.91 ± 3.70 |
+| Kbenkhaled/Qwen3.5-27B-NVFP4 |     tg32 @ d8192 |    79.22 ± 0.16 | 81.83 ± 0.17 |                   |                   |                   |
+| Kbenkhaled/Qwen3.5-27B-NVFP4 | pp2048 @ d131072 | 2495.71 ± 10.32 |              | 53344.75 ± 219.70 | 53340.52 ± 219.70 | 53344.93 ± 219.72 |
+| Kbenkhaled/Qwen3.5-27B-NVFP4 |   tg32 @ d131072 |    70.04 ± 0.13 | 72.49 ± 0.13 |                   |                   |                   |
 
 ## Requirements
 
