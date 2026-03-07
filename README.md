@@ -1,10 +1,10 @@
-# Qwen3.5-35B-A3B-NVFP4 on RTX 5090 with vLLM
+# Qwen3.5-27B-NVFP4 on RTX 5090 with vLLM
 
-Run [Qwen3.5-35B-A3B](https://huggingface.co/Qwen/Qwen3.5-35B-A3B) (Mamba-hybrid MoE, 35B total / 3B active) on a single **NVIDIA RTX 5090** (32 GB) using [vLLM](https://github.com/vllm-project/vllm) with **NVFP4 quantization**.
+Run [Qwen3.5-27B](https://huggingface.co/Qwen/Qwen3.5-27B) (Mamba-hybrid, 27B dense) on a single **NVIDIA RTX 5090** (32 GB) using [vLLM](https://github.com/vllm-project/vllm) with **NVFP4 quantization**.
 
 ## ⚡ Performance
 
-Benchmarked on a single RTX 5090 (32 GB) with [llama-bench](https://github.com/ggml-org/llama.cpp/tree/master/tools/llama-bench) using the [Kbenkhaled/Qwen3.5-35B-A3B-NVFP4](https://huggingface.co/Kbenkhaled/Qwen3.5-35B-A3B-NVFP4) checkpoint:
+Benchmarked on a single RTX 5090 (32 GB) with [llama-bench](https://github.com/ggml-org/llama.cpp/tree/master/tools/llama-bench) using the [Kbenkhaled/Qwen3.5-27B-NVFP4](https://huggingface.co/Kbenkhaled/Qwen3.5-27B-NVFP4) checkpoint:
 
 | Metric | 4K Context | 8K Context | 256K Context |
 |---|---|---|---|
@@ -19,13 +19,13 @@ Benchmarked on a single RTX 5090 (32 GB) with [llama-bench](https://github.com/g
 - 256K context length with FP8 KV cache
 - NVFP4 quantization via Marlin GEMM backend
 - Auto-patches vLLM to correctly handle BF16 layers (Mamba attention, MoE gates, MTP)
-- Uses the official `vllm/vllm-openai:nightly` Docker image — no custom builds needed
+- Uses the official `vllm/vllm-openai:cu130-nightly` Docker image — no custom builds needed
 
 ## GPU Compatibility
 
 > **⚠️ This setup is tested and verified on NVIDIA RTX 5090 only.**
 
-NVFP4 quantization requires Blackwell architecture FP4 tensor core instructions. Additionally, the `vllm/vllm-openai:nightly` Docker image ships with PyTorch kernels compiled for **SM 12.0**, which matches the RTX 5090 but may not work on other Blackwell GPUs with different compute capabilities (e.g. DGX Spark GB10 is SM 12.1).
+NVFP4 quantization requires Blackwell architecture FP4 tensor core instructions. Additionally, the `vllm/vllm-openai:cu130-nightly` Docker image ships with PyTorch kernels compiled for **SM 12.0**, which matches the RTX 5090 but may not work on other Blackwell GPUs with different compute capabilities (e.g. DGX Spark GB10 is SM 12.1).
 
 ## Quick Start
 
@@ -62,7 +62,7 @@ All user-specific settings live in `.env` (see [`.env.example`](.env.example)):
 | Parameter | Value | Notes |
 |---|---|---|
 | `--max-model-len` | `262144` | 256K context window |
-| `--gpu-memory-utilization` | `0.85` | ~27 GB of 32 GB VRAM |
+| `--gpu-memory-utilization` | `0.8` | ~25.6 GB of 32 GB VRAM |
 | `--max-num-seqs` | `4` | Max concurrent sequences |
 | `--max-num-batched-tokens` | `4096` | Per-batch token budget |
 
@@ -90,4 +90,4 @@ Tested on a single NVIDIA RTX 5090 (32 GB) using [llama-bench](https://github.co
 
 ## License
 
-This configuration is provided as-is. The model itself is subject to the [Qwen License](https://huggingface.co/Qwen/Qwen3.5-35B-A3B/blob/main/LICENSE).
+This configuration is provided as-is. The model itself is subject to the [Qwen License](https://huggingface.co/Qwen/Qwen3.5-27B/blob/main/LICENSE).

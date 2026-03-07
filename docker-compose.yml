@@ -1,19 +1,14 @@
-# docker-compose.yml - Qwen3.5-35B-A3B-NVFP4 on RTX 5090
-# Using vLLM nightly with NVFP4 quantization patches
+# docker-compose.yml - Qwen3.5-27B-NVFP4 on RTX 5090
+# Using vLLM cu130-nightly with NVFP4 quantization patches
 services:
   vllm:
-    image: vllm/vllm-openai:nightly
-    container_name: qwen3.5-35b-a3b-nvfp4
+    image: vllm/vllm-openai:cu130-nightly
+    container_name: qwen3.5-27b-nvfp4
     restart: unless-stopped
     network_mode: host
     ipc: host
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
+    devices:
+      - "nvidia.com/gpu=all"
     volumes:
       - ${HF_CACHE}:/root/.cache/huggingface
       - ./fix_linear_attn_nvfp4_exclusion.py:/workspace/fix_linear_attn_nvfp4_exclusion.py:ro
@@ -28,11 +23,11 @@ services:
     command:
       - >-
         python3 /workspace/fix_linear_attn_nvfp4_exclusion.py &&
-        vllm serve Kbenkhaled/Qwen3.5-35B-A3B-NVFP4
+        vllm serve Kbenkhaled/Qwen3.5-27B-NVFP4
         --host 0.0.0.0
         --port 8000
         --max-model-len 262144
-        --gpu-memory-utilization 0.85
+        --gpu-memory-utilization 0.8
         --max-num-seqs 4
         --max-num-batched-tokens 4096
         --kv-cache-dtype fp8
