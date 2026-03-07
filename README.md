@@ -4,7 +4,7 @@ Run [Qwen3.5-27B](https://huggingface.co/Qwen/Qwen3.5-27B) (Mamba-hybrid, 27B de
 
 ## ⚡ Performance
 
-Benchmarked on a single RTX 5090 (32 GB) with [llama-benchy](https://github.com/eugr/llama-benchy) using the [Kbenkhaled/Qwen3.5-27B-NVFP4](https://huggingface.co/Kbenkhaled/Qwen3.5-27B-NVFP4) checkpoint:
+Benchmarked on a single RTX 5090 (32 GB) with [llama-benchy](https://github.com/eugr/llama-benchy) using the [Kbenkhaled/Qwen3.5-27B-NVFP4](https://huggingface.co/Kbenkhaled/Qwen3.5-27B-NVFP4) checkpoint.
 
 | Metric | 4K Context | 8K Context | 128K Context |
 |---|---|---|---|
@@ -12,12 +12,12 @@ Benchmarked on a single RTX 5090 (32 GB) with [llama-benchy](https://github.com/
 | **Text generation** (tg32) | 80 t/s | 79 t/s | 70 t/s |
 | **Time to first token** | 1,534 ms | 2,602 ms | 53,345 ms |
 
-> **~80 tokens/sec generation speed** — fast enough for real-time interactive use.
+> **~80 tokens/sec generation speed** — fast enough for real-time interactive use (default Marlin backend).
 
 ## Features
 
 - 256K context length with FP8 KV cache
-- NVFP4 quantization via Marlin GEMM backend
+- NVFP4 quantization with selectable GEMM backend (Marlin or FlashInfer-CUTLASS)
 - Auto-patches vLLM to correctly handle BF16 layers (Mamba attention, MoE gates, MTP)
 - Uses the official `vllm/vllm-openai:cu130-nightly` Docker image — no custom builds needed
 
@@ -56,6 +56,7 @@ All user-specific settings live in `.env` (see [`.env.example`](.env.example)):
 |---|---|
 | `HF_TOKEN` | Your [Hugging Face token](https://huggingface.co/settings/tokens) (required for gated models) |
 | `HF_CACHE` | Path to your local HF cache directory (e.g. `/home/user/.cache/huggingface`) |
+| `NVFP4_BACKEND` | NVFP4 GEMM backend: `marlin` (default, better decode) or `flashinfer-cutlass` (better prefill) |
 
 ### Key vLLM Parameters
 

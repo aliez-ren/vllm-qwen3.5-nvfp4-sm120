@@ -15,8 +15,7 @@ services:
     environment:
       - HF_TOKEN=${HF_TOKEN}
       - VLLM_USE_FLASHINFER_MOE_FP4=0
-      - VLLM_TEST_FORCE_FP8_MARLIN=1
-      - VLLM_NVFP4_GEMM_BACKEND=marlin
+      - VLLM_NVFP4_GEMM_BACKEND=${NVFP4_BACKEND:-marlin}
       - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
       - PYTHONWARNINGS=ignore::UserWarning:vllm.model_executor.layers.fla.ops
     entrypoint: ["/bin/bash", "-c"]
