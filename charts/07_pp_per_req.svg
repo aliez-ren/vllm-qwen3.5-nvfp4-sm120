@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="system-ui, -apple-system, sans-serif">
+<rect width="720" height="420" fill="#fafafa" rx="8"/>
+<text x="360.0" y="30" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">Per-Request Prompt Processing (pp2048)</text>
+<line x1="90" y1="350.0" x2="690" y2="350.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="350.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">0.00</text>
+<line x1="90" y1="312.5" x2="690" y2="312.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="312.5" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">2,000</text>
+<line x1="90" y1="275.0" x2="690" y2="275.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="275.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">4,000</text>
+<line x1="90" y1="237.5" x2="690" y2="237.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="237.5" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">6,000</text>
+<line x1="90" y1="200.0" x2="690" y2="200.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="200.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">8,000</text>
+<line x1="90" y1="162.5" x2="690" y2="162.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="162.5" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">10K</text>
+<line x1="90" y1="125.0" x2="690" y2="125.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="125.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">12K</text>
+<line x1="90" y1="87.5" x2="690" y2="87.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="87.5" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">14K</text>
+<line x1="90" y1="50.0" x2="690" y2="50.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="50.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">16K</text>
+<text x="16" y="200.0" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#4b5563" transform="rotate(-90,16,200.0)">Tokens/sec/req</text>
+<line x1="90.0" y1="50" x2="90.0" y2="350" stroke="#f3f4f6" stroke-width="1"/>
+<text x="90.0" y="370" text-anchor="middle" font-size="12" fill="#6b7280">2K</text>
+<line x1="290.0" y1="50" x2="290.0" y2="350" stroke="#f3f4f6" stroke-width="1"/>
+<text x="290.0" y="370" text-anchor="middle" font-size="12" fill="#6b7280">4K</text>
+<line x1="490.0" y1="50" x2="490.0" y2="350" stroke="#f3f4f6" stroke-width="1"/>
+<text x="490.0" y="370" text-anchor="middle" font-size="12" fill="#6b7280">8K</text>
+<line x1="690.0" y1="50" x2="690.0" y2="350" stroke="#f3f4f6" stroke-width="1"/>
+<text x="690.0" y="370" text-anchor="middle" font-size="12" fill="#6b7280">128K</text>
+<text x="390.0" y="410" text-anchor="middle" font-size="13" fill="#4b5563">Context Depth</text>
+<rect x="90" y="50" width="600" height="300" fill="none" stroke="#d1d5db" stroke-width="1"/>
+<path d="M90.0,273.8 L290.0,274.7 L490.0,276.1 L690.0,303.2" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="90.0" cy="273.8" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="290.0" cy="274.7" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="490.0" cy="276.1" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="690.0" cy="303.2" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<path d="M90.0,157.3 L290.0,93.3 L490.0,113.0 L690.0,264.6" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+<circle cx="90.0" cy="157.3" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="290.0" cy="93.3" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="490.0" cy="113.0" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="690.0" cy="264.6" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<path d="M90.0,323.9 L290.0,323.5 L490.0,320.9 L690.0,325.9" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="8,4"/>
+<circle cx="90.0" cy="323.9" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="290.0" cy="323.5" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="490.0" cy="320.9" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="690.0" cy="325.9" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<path d="M90.0,254.3 L290.0,253.3 L490.0,248.5 L690.0,306.4" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="8,4"/>
+<circle cx="90.0" cy="254.3" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="290.0" cy="253.3" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="490.0" cy="248.5" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="690.0" cy="306.4" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<rect x="100" y="60" width="200" height="98" fill="white" fill-opacity="0.9" stroke="#e5e7eb" rx="4"/>
+<line x1="110" y1="80" x2="135" y2="80" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="122" cy="80" r="3" fill="#2563eb"/>
+<text x="142" y="80" dominant-baseline="middle" font-size="12" fill="#374151">C1 Marlin</text>
+<line x1="110" y1="102" x2="135" y2="102" stroke="#dc2626" stroke-width="2.5"/>
+<circle cx="122" cy="102" r="3" fill="#dc2626"/>
+<text x="142" y="102" dominant-baseline="middle" font-size="12" fill="#374151">C1 FlashInfer</text>
+<line x1="110" y1="124" x2="135" y2="124" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="8,4"/>
+<circle cx="122" cy="124" r="3" fill="#2563eb"/>
+<text x="142" y="124" dominant-baseline="middle" font-size="12" fill="#374151">C4 Marlin</text>
+<line x1="110" y1="146" x2="135" y2="146" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="8,4"/>
+<circle cx="122" cy="146" r="3" fill="#dc2626"/>
+<text x="142" y="146" dominant-baseline="middle" font-size="12" fill="#374151">C4 FlashInfer</text>
+</svg>

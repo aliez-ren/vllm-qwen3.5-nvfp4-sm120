@@ -80,7 +80,32 @@ This patch is needed because vLLM's HuggingFace-to-vLLM name mapping doesn't cor
 
 Tested on a single NVIDIA RTX 5090 (32 GB) using [llama-benchy](https://github.com/eugr/llama-benchy):
 
-### Concurrency = 1
+### Charts
+
+#### Prompt Processing Throughput (pp2048 t/s)
+![Prompt Processing Throughput](charts/01_pp_throughput.svg)
+
+#### Text Generation Speed — Total (tg32 t/s)
+![Text Generation Speed — Total](charts/02_tg_total_throughput.svg)
+
+#### Text Generation Peak Speed (tg32 peak t/s)
+![Text Generation Peak Speed](charts/03_tg_peak_speed.svg)
+
+#### Time to First Response (ms, log scale)
+![Time to First Response](charts/04_ttfr.svg)
+
+#### End-to-End Time to First Token (ms, log scale)
+![End-to-End Time to First Token](charts/05_e2e_ttft.svg)
+
+#### Per-Request Generation Speed (tg32 t/s)
+![Per-Request Generation Speed](charts/06_tg_per_req.svg)
+
+#### Per-Request Prompt Processing (pp2048 t/s)
+![Per-Request Prompt Processing](charts/07_pp_per_req.svg)
+
+### Raw Data
+
+#### Concurrency = 1
 
 ```bash
 uvx llama-benchy --base-url http://localhost:8000/v1 --model Kbenkhaled/Qwen3.5-27B-NVFP4 --depth 2048 4096 8192 131072 --concurrency 1
@@ -110,7 +135,7 @@ VLLM_NVFP4_GEMM_BACKEND=flashinfer-cutlass
 | Kbenkhaled/Qwen3.5-27B-NVFP4 | pp2048 @ d131072 |    4552.98 ± 55.59 |              | 29247.07 ± 355.60 | 29242.54 ± 355.60 | 29247.22 ± 355.60 |
 | Kbenkhaled/Qwen3.5-27B-NVFP4 |   tg32 @ d131072 |       53.39 ± 0.08 | 55.19 ± 0.08 |                   |                   |                   |
 
-### Concurrency = 4
+#### Concurrency = 4
 
 ```bash
 uvx llama-benchy --base-url http://localhost:8000/v1 --model Kbenkhaled/Qwen3.5-27B-NVFP4 --depth 2048 4096 8192 131072 --concurrency 4

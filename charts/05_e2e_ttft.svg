@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="system-ui, -apple-system, sans-serif">
+<rect width="720" height="420" fill="#fafafa" rx="8"/>
+<text x="360.0" y="30" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">End-to-End Time to First Token (pp2048)</text>
+<line x1="90" y1="350.0" x2="690" y2="350.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="350.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">100.0</text>
+<line x1="90" y1="275.0" x2="690" y2="275.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="275.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">1,000</text>
+<line x1="90" y1="200.0" x2="690" y2="200.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="200.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">10K</text>
+<line x1="90" y1="125.0" x2="690" y2="125.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="125.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">100K</text>
+<line x1="90" y1="50.0" x2="690" y2="50.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="80" y="50.0" text-anchor="end" dominant-baseline="middle" font-size="12" fill="#6b7280">1000K</text>
+<text x="16" y="200.0" text-anchor="middle" dominant-baseline="middle" font-size="13" fill="#4b5563" transform="rotate(-90,16,200.0)">Latency (ms)</text>
+<line x1="90.0" y1="50" x2="90.0" y2="350" stroke="#f3f4f6" stroke-width="1"/>
+<text x="90.0" y="370" text-anchor="middle" font-size="12" fill="#6b7280">2K</text>
+<line x1="290.0" y1="50" x2="290.0" y2="350" stroke="#f3f4f6" stroke-width="1"/>
+<text x="290.0" y="370" text-anchor="middle" font-size="12" fill="#6b7280">4K</text>
+<line x1="490.0" y1="50" x2="490.0" y2="350" stroke="#f3f4f6" stroke-width="1"/>
+<text x="490.0" y="370" text-anchor="middle" font-size="12" fill="#6b7280">8K</text>
+<line x1="690.0" y1="50" x2="690.0" y2="350" stroke="#f3f4f6" stroke-width="1"/>
+<text x="690.0" y="370" text-anchor="middle" font-size="12" fill="#6b7280">128K</text>
+<text x="390.0" y="410" text-anchor="middle" font-size="13" fill="#4b5563">Context Depth</text>
+<rect x="90" y="50" width="600" height="300" fill="none" stroke="#d1d5db" stroke-width="1"/>
+<path d="M90.0,274.6 L290.0,261.1 L490.0,243.9 L690.0,145.5" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="90.0" cy="274.6" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="290.0" cy="261.1" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="490.0" cy="243.9" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="690.0" cy="145.5" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<path d="M90.0,300.3 L290.0,300.7 L490.0,281.7 L690.0,165.0" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+<circle cx="90.0" cy="300.3" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="290.0" cy="300.7" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="490.0" cy="281.7" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="690.0" cy="165.0" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<path d="M90.0,237.2 L290.0,224.2 L490.0,209.0 L690.0,115.3" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="8,4"/>
+<circle cx="90.0" cy="237.2" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="290.0" cy="224.2" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="490.0" cy="209.0" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<circle cx="690.0" cy="115.3" r="4" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+<path d="M90.0,279.0 L290.0,266.0 L490.0,249.5 L690.0,134.5" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="8,4"/>
+<circle cx="90.0" cy="279.0" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="290.0" cy="266.0" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="490.0" cy="249.5" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<circle cx="690.0" cy="134.5" r="4" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+<rect x="100" y="60" width="200" height="98" fill="white" fill-opacity="0.9" stroke="#e5e7eb" rx="4"/>
+<line x1="110" y1="80" x2="135" y2="80" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="122" cy="80" r="3" fill="#2563eb"/>
+<text x="142" y="80" dominant-baseline="middle" font-size="12" fill="#374151">C1 Marlin</text>
+<line x1="110" y1="102" x2="135" y2="102" stroke="#dc2626" stroke-width="2.5"/>
+<circle cx="122" cy="102" r="3" fill="#dc2626"/>
+<text x="142" y="102" dominant-baseline="middle" font-size="12" fill="#374151">C1 FlashInfer</text>
+<line x1="110" y1="124" x2="135" y2="124" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="8,4"/>
+<circle cx="122" cy="124" r="3" fill="#2563eb"/>
+<text x="142" y="124" dominant-baseline="middle" font-size="12" fill="#374151">C4 Marlin</text>
+<line x1="110" y1="146" x2="135" y2="146" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="8,4"/>
+<circle cx="122" cy="146" r="3" fill="#dc2626"/>
+<text x="142" y="146" dominant-baseline="middle" font-size="12" fill="#374151">C4 FlashInfer</text>
+</svg>
