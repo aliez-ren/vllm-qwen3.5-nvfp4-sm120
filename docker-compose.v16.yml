@@ -1,0 +1,42 @@
+# docker-compose.v16.yml - Qwen3.5-27B-NVFP4 on RTX 5090
+# Using vLLM cu130-nightly with NVFP4 quantization patches (v0.16 legacy)
+services:
+  vllm:
+    image: vllm/vllm-openai:cu130-nightly
+    container_name: qwen3.5-27b-nvfp4
+    restart: unless-stopped
+    network_mode: host
+    ipc: host
+    devices:
+      - "nvidia.com/gpu=all"
+    volumes:
+      - ${HF_CACHE}:/root/.cache/huggingface
+      - ./fix_linear_attn_nvfp4_exclusion.py:/workspace/fix_linear_attn_nvfp4_exclusion.py:ro
+    environment:
+      - HF_TOKEN=${HF_TOKEN}
+      - VLLM_USE_FLASHINFER_MOE_FP4=0
+      - VLLM_NVFP4_GEMM_BACKEND=${NVFP4_BACKEND:-marlin}
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+      - PYTHONWARNINGS=ignore::UserWarning:vllm.model_executor.layers.fla.ops
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - >-
+        python3 /workspace/fix_linear_attn_nvfp4_exclusion.py &&
+        vllm serve Kbenkhaled/Qwen3.5-27B-NVFP4
+        --host 0.0.0.0
+        --port 8000
+        --max-model-len 262144
+        --gpu-memory-utilization 0.8
+        --max-num-seqs 4
+        --max-num-batched-tokens 4096
+        --kv-cache-dtype fp8
+        --reasoning-parser qwen3
+        --enable-auto-tool-choice
+        --enable-prefix-caching
+        --tool-call-parser qwen3_coder
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 600s

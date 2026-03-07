@@ -18,8 +18,8 @@ Benchmarked on a single RTX 5090 (32 GB) with [llama-benchy](https://github.com/
 
 - 256K context length with FP8 KV cache
 - NVFP4 quantization with selectable GEMM backend (Marlin or FlashInfer-CUTLASS)
-- Auto-patches vLLM to correctly handle BF16 layers (Mamba attention, MoE gates, MTP)
-- Uses the official `vllm/vllm-openai:cu130-nightly` Docker image — no custom builds needed
+- Works out of the box with vLLM v0.17+ — no patches or custom builds needed
+- Uses the official `vllm/vllm-openai:cu130-nightly` Docker image
 
 ## GPU Compatibility
 
@@ -67,14 +67,22 @@ All user-specific settings live in `.env` (see [`.env.example`](.env.example)):
 | `--max-num-seqs` | `4` | Max concurrent sequences |
 | `--max-num-batched-tokens` | `4096` | Per-batch token budget |
 
-## What the Patch Does
+## About the Patch (vLLM v0.16 only)
 
-The Qwen3.5 Mamba-hybrid architecture has layers that must remain in BF16 even when the rest of the model is NVFP4-quantized. The included `fix_linear_attn_nvfp4_exclusion.py` patches vLLM at container startup to:
+> **vLLM v0.17+ has fixed this issue natively — the patch is no longer needed.** The default `docker-compose.yml` uses v0.17+ and does not include the patch.
+
+The Qwen3.5 Mamba-hybrid architecture has layers that must remain in BF16 even when the rest of the model is NVFP4-quantized. In vLLM v0.16, the HuggingFace-to-vLLM name mapping didn't correctly translate the checkpoint's quantization ignore list for this architecture. The included `fix_linear_attn_nvfp4_exclusion.py` patched vLLM at container startup to:
 
 1. **Exclude BF16 layers** from NVFP4 quantization: `linear_attn` (Mamba), `shared_expert_gate`, `.mlp.gate` (MoE router), and `mtp.*` layers
 2. **Handle weight size mismatches** gracefully during loading, re-materializing affected parameters as unquantized tensors
 
-This patch is needed because vLLM's HuggingFace-to-vLLM name mapping doesn't correctly translate the checkpoint's quantization ignore list for this architecture. It applies to **any NVFP4 quantization** of the Qwen3.5 Mamba-hybrid model family, not just a specific checkpoint. Once vLLM upstream fixes the name mapping, this patch will no longer be needed.
+vLLM v0.17 fixed this upstream via [`apply_vllm_mapper`](https://github.com/vllm-project/vllm/issues/28072), which now properly translates the exclude_modules list from HF names to vLLM names.
+
+If you need to use vLLM v0.16, use the legacy configuration:
+
+```bash
+docker compose -f docker-compose.v16.yml up -d
+```
 
 ## Benchmark
 
