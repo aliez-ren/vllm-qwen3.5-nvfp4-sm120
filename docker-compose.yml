@@ -13,23 +13,22 @@ services:
       - ${HF_CACHE}:/root/.cache/huggingface
     environment:
       - HF_TOKEN=${HF_TOKEN}
-      - VLLM_USE_FLASHINFER_MOE_FP4=0
       - VLLM_NVFP4_GEMM_BACKEND=${NVFP4_BACKEND:-marlin}
-      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-      - PYTHONWARNINGS=ignore::UserWarning:vllm.model_executor.layers.fla.ops
     command:
-      - "Kbenkhaled/Qwen3.5-27B-NVFP4"
-      - "--host=0.0.0.0"
-      - "--port=8000"
-      - "--max-model-len=262144"
-      - "--gpu-memory-utilization=0.8"
-      - "--max-num-seqs=4"
-      - "--max-num-batched-tokens=4096"
-      - "--kv-cache-dtype=fp8"
-      - "--reasoning-parser=qwen3"
-      - "--enable-auto-tool-choice"
-      - "--enable-prefix-caching"
-      - "--tool-call-parser=qwen3_coder"
+      - >-
+        Kbenkhaled/Qwen3.5-27B-NVFP4
+        --host=0.0.0.0
+        --port=8000
+        --max-model-len=234567
+        --gpu-memory-utilization=0.88
+        --max-num-seqs=4
+        --max-num-batched-tokens=4096
+        --kv-cache-dtype=fp8
+        --reasoning-parser=qwen3
+        --enable-auto-tool-choice
+        --enable-prefix-caching
+        --tool-call-parser=qwen3_coder
+        --language-model-only
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s

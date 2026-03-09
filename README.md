@@ -16,7 +16,7 @@ Benchmarked on a single RTX 5090 (32 GB) with [llama-benchy](https://github.com/
 
 ## Features
 
-- 256K context length with FP8 KV cache
+- 229K context length with FP8 KV cache
 - NVFP4 quantization with selectable GEMM backend (Marlin or FlashInfer-CUTLASS)
 - Works out of the box with vLLM v0.17+ — no patches or custom builds needed
 - Uses the official `vllm/vllm-openai:cu130-nightly` Docker image
@@ -62,7 +62,7 @@ All user-specific settings live in `.env` (see [`.env.example`](.env.example)):
 
 | Parameter | Value | Notes |
 |---|---|---|
-| `--max-model-len` | `262144` | 256K context window |
+| `--max-model-len` | `234567` | 229K context window |
 | `--gpu-memory-utilization` | `0.8` | ~25.6 GB of 32 GB VRAM |
 | `--max-num-seqs` | `4` | Max concurrent sequences |
 | `--max-num-batched-tokens` | `4096` | Per-batch token budget |

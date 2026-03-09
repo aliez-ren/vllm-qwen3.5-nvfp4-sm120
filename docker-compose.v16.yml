@@ -25,8 +25,8 @@ services:
         vllm serve Kbenkhaled/Qwen3.5-27B-NVFP4
         --host 0.0.0.0
         --port 8000
-        --max-model-len 262144
-        --gpu-memory-utilization 0.8
+        --max-model-len 234567
+        --gpu-memory-utilization 0.88
         --max-num-seqs 4
         --max-num-batched-tokens 4096
         --kv-cache-dtype fp8
@@ -34,6 +34,7 @@ services:
         --enable-auto-tool-choice
         --enable-prefix-caching
         --tool-call-parser qwen3_coder
+        --language-model-only
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
