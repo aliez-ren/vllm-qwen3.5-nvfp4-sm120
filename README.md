@@ -63,7 +63,7 @@ All user-specific settings live in `.env` (see [`.env.example`](.env.example)):
 | Parameter | Value | Notes |
 |---|---|---|
 | `--max-model-len` | `234567` | 229K context window |
-| `--gpu-memory-utilization` | `0.8` | ~25.6 GB of 32 GB VRAM |
+| `--gpu-memory-utilization` | `0.89` | ~28.5 GB of 32 GB VRAM |
 | `--max-num-seqs` | `4` | Max concurrent sequences |
 | `--max-num-batched-tokens` | `4096` | Per-batch token budget |
 

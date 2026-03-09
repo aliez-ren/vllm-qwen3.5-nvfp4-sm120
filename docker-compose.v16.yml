@@ -26,7 +26,7 @@ services:
         --host 0.0.0.0
         --port 8000
         --max-model-len 234567
-        --gpu-memory-utilization 0.88
+        --gpu-memory-utilization 0.89
         --max-num-seqs 4
         --max-num-batched-tokens 4096
         --kv-cache-dtype fp8
